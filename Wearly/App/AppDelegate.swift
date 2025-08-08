@@ -1,15 +1,14 @@
 //
 //  AppDelegate.swift
-//  Wearly
+//  OOtdays
 //
-//  Created by Melike Su KOÇYİĞİT on 8.08.2025.
+//  Created by Melike Su KOÇYİĞİT on 6.08.2025.
 //
 
 import UIKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -33,4 +32,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 }
+
+
 
