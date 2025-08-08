@@ -17,10 +17,10 @@
 		F17DCB5C2E45E63C006C5578 /* ClothingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17DCB5B2E45E63C006C5578 /* ClothingCell.swift */; };
 		F17DCB5E2E45E64C006C5578 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17DCB5D2E45E64C006C5578 /* ProfileViewController.swift */; };
 		F17DCB602E45E663006C5578 /* CombinationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17DCB5F2E45E663006C5578 /* CombinationsViewController.swift */; };
-		F17DCB622E45E67A006C5578 /* WardrobeViiewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17DCB612E45E67A006C5578 /* WardrobeViiewController.swift */; };
 		F17DCB642E45E68A006C5578 /* AddClothingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17DCB632E45E68A006C5578 /* AddClothingViewController.swift */; };
 		F17DCB662E45E698006C5578 /* WardrobeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17DCB652E45E698006C5578 /* WardrobeViewModel.swift */; };
 		F17DCB682E45E71B006C5578 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17DCB672E45E71B006C5578 /* MainTabBarController.swift */; };
+		F17DCB6A2E45EDB0006C5578 /* WardrobeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17DCB692E45EDB0006C5578 /* WardrobeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,10 +36,10 @@
 		F17DCB5B2E45E63C006C5578 /* ClothingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothingCell.swift; sourceTree = "<group>"; };
 		F17DCB5D2E45E64C006C5578 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		F17DCB5F2E45E663006C5578 /* CombinationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombinationsViewController.swift; sourceTree = "<group>"; };
-		F17DCB612E45E67A006C5578 /* WardrobeViiewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WardrobeViiewController.swift; sourceTree = "<group>"; };
 		F17DCB632E45E68A006C5578 /* AddClothingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddClothingViewController.swift; sourceTree = "<group>"; };
 		F17DCB652E45E698006C5578 /* WardrobeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WardrobeViewModel.swift; sourceTree = "<group>"; };
 		F17DCB672E45E71B006C5578 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		F17DCB692E45EDB0006C5578 /* WardrobeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WardrobeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,8 +99,8 @@
 				F17DCB5B2E45E63C006C5578 /* ClothingCell.swift */,
 				F17DCB5D2E45E64C006C5578 /* ProfileViewController.swift */,
 				F17DCB5F2E45E663006C5578 /* CombinationsViewController.swift */,
-				F17DCB612E45E67A006C5578 /* WardrobeViiewController.swift */,
 				F17DCB632E45E68A006C5578 /* AddClothingViewController.swift */,
+				F17DCB692E45EDB0006C5578 /* WardrobeViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -203,8 +203,8 @@
 				F17DCB5C2E45E63C006C5578 /* ClothingCell.swift in Sources */,
 				F17DCB462E45E5B2006C5578 /* ViewController.swift in Sources */,
 				F17DCB422E45E5B2006C5578 /* AppDelegate.swift in Sources */,
-				F17DCB622E45E67A006C5578 /* WardrobeViiewController.swift in Sources */,
 				F17DCB442E45E5B2006C5578 /* SceneDelegate.swift in Sources */,
+				F17DCB6A2E45EDB0006C5578 /* WardrobeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
