@@ -1,39 +1,31 @@
-//
-//  MainTabBarController.swift
-//  OOtdays
-//
-//  Created by Melike Su KOÇYİĞİT on 6.08.2025.
-//
-
-import Foundation
 import UIKit
 
-class MainTabBarController: UITabBarController {
-    
+final class MainTabBarController: UITabBarController {
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupTabBar()
-    }
-    
-    private func setupTabBar()
-    {
-        
-        let wardrobeVC = UINavigationController(rootViewController: WardrobeViewController())
-        wardrobeVC.tabBarItem = UITabBarItem(title: "Wardrobe", image: UIImage(systemName: "tshirt"), tag: 0)
 
-        let combinationsVC = UINavigationController(rootViewController: CombinationsViewController())
-        combinationsVC.tabBarItem = UITabBarItem(
-            title: "Combinations",
-            image: UIImage(systemName: "sparkles"),
-            tag: 1
+        // Wardrobe
+        let wardrobeVM = WardrobeViewModel()
+        let wardrobeVC = WardrobeViewController(viewModel: wardrobeVM)
+        let wardrobeNav = UINavigationController(rootViewController: wardrobeVC)
+        wardrobeNav.tabBarItem = UITabBarItem(
+            title: "Wardrobe",
+            image: UIImage(systemName: "hanger"),
+            selectedImage: UIImage(systemName: "hanger")
         )
- 
-        let profileVC = UINavigationController(rootViewController: ProfileViewController())
-        profileVC.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person.crop.circle"), tag: 2)
-        
-       
-        viewControllers = [wardrobeVC, combinationsVC, profileVC]
+
+        let combos = UIViewController()
+        combos.view.backgroundColor = .systemBackground
+        combos.title = "Combinations"
+        combos.tabBarItem = UITabBarItem(title: "Combos", image: UIImage(systemName: "sparkles"), selectedImage: nil)
+
+        let profile = UIViewController()
+        profile.view.backgroundColor = .systemBackground
+        profile.title = "Profile"
+        profile.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person.crop.circle"), selectedImage: nil)
+
+        viewControllers = [wardrobeNav, combos, profile]
     }
 }
-
 
