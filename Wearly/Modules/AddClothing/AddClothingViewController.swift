@@ -3,28 +3,25 @@ import VisionKit
 
 final class AddClothingViewController: UIViewController, VNDocumentCameraViewControllerDelegate {
 
-    // DI
     private let viewModel: AddClothingViewModel
     init(viewModel: AddClothingViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
         title = "Add Item"
     }
-    @available(*, unavailable)
+    @available(*, unavailable) // required init kullanılmadan önce kullanılır
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
 
-    // Callback
     var onSave: ((UIImage, String, ClothingCategory, String, String) -> Void)?
 
-    // UI
     private let imageView: UIImageView = {
-        let v = UIImageView()
-        v.contentMode = .scaleAspectFit
-        v.backgroundColor = .systemGray5
-        v.layer.cornerRadius = 12
-        v.clipsToBounds = true
-        v.translatesAutoresizingMaskIntoConstraints = false
-        return v
+        let view = UIImageView()
+        view.contentMode = .scaleAspectFit
+        view.backgroundColor = .systemGray5
+        view.layer.cornerRadius = 12
+        view.clipsToBounds = true
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
 
     private let nameField = AddClothingViewController.makeTextField(placeholder: "Name")
@@ -33,7 +30,7 @@ final class AddClothingViewController: UIViewController, VNDocumentCameraViewCon
 
     private let resultLabel: UILabel = {
         let l = UILabel()
-        l.text = "Predicted: –"
+        l.text = "Predicted:"
         l.textAlignment = .center
         l.translatesAutoresizingMaskIntoConstraints = false
         return l
@@ -56,7 +53,7 @@ final class AddClothingViewController: UIViewController, VNDocumentCameraViewCon
     }()
     private let colorHexLabel: UILabel = {
         let l = UILabel()
-        l.text = "#—"
+        l.text = "#"
         l.textColor = .secondaryLabel
         l.font = .systemFont(ofSize: 13)
         l.translatesAutoresizingMaskIntoConstraints = false
@@ -242,7 +239,6 @@ final class AddClothingViewController: UIViewController, VNDocumentCameraViewCon
         present(scanner, animated: true)
     }
 
-    // Scanner result
     func documentCameraViewController(_ controller: VNDocumentCameraViewController,
                                       didFinishWith scan: VNDocumentCameraScan) {
         defer { controller.dismiss(animated: true) }
@@ -256,16 +252,12 @@ final class AddClothingViewController: UIViewController, VNDocumentCameraViewCon
         saveButton.isEnabled = true
         saveButton.alpha = 1.0
     }
-
-    // Save
     @objc private func saveTapped() {
         if let payload = viewModel.buildPayload(name: nameField.text) {
             onSave?(payload.image, payload.name, payload.category, payload.season, payload.colorHex)
             dismiss(animated: true)
         }
     }
-
-    // Color
     @objc private func colorSelected(_ sender: UIButton) {
         viewModel.selectColor(at: sender.tag)
     }
@@ -306,4 +298,5 @@ extension AddClothingViewController: UIPickerViewDataSource, UIPickerViewDelegat
 }
 
     
+
 

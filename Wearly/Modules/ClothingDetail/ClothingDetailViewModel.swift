@@ -11,10 +11,13 @@ final class ClothingDetailViewModel {
     var image: UIImage? { item.image }
     var categoryText: String { item.category.rawValue }
     var seasonText: String { item.season }
-    var colorHex: String { item.color }
+
+    var colorHex: String {
+        item.color.isEmpty ? "#AAAAAA" : item.color
+    }
 
     func color() -> UIColor {
-        UIColor(hex: item.color) ?? .systemGray3
+        UIColor(hex: colorHex) ?? .systemGray3
     }
 }
 
@@ -26,7 +29,10 @@ extension UIColor {
               let r = UInt8(s.prefix(2), radix: 16),
               let g = UInt8(s.dropFirst(2).prefix(2), radix: 16),
               let b = UInt8(s.suffix(2), radix: 16) else { return nil }
-        self.init(red: CGFloat(r)/255, green: CGFloat(g)/255, blue: CGFloat(b)/255, alpha: 1)
+        self.init(red: CGFloat(r)/255,
+                  green: CGFloat(g)/255,
+                  blue: CGFloat(b)/255,
+                  alpha: 1)
     }
 }
 

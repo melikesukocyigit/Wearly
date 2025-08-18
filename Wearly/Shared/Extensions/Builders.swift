@@ -1,3 +1,4 @@
+
 //
 //  Builders.swift
 //  Wearly
@@ -5,24 +6,23 @@
 //  Created by Melike Su KOÇYİĞİT on 12.08.2025.
 //
 
-import UIKit
+/* import UIKit
 
-// MARK: - UIImageView
+
 extension UIImageView {
     static func buildRounded(background: UIColor? = nil,
                              contentMode: UIView.ContentMode = .scaleAspectFit,
                              cornerRadius: CGFloat = 12) -> UIImageView {
-        let iv = UIImageView()
-        iv.translatesAutoresizingMaskIntoConstraints = false
-        iv.contentMode = contentMode
-        iv.layer.cornerRadius = cornerRadius
-        iv.clipsToBounds = true
-        if let bg = background { iv.backgroundColor = bg }
-        return iv
+        let imageview = UIImageView()
+        imageview.translatesAutoresizingMaskIntoConstraints = false
+        imageview.contentMode = contentMode
+        imageview.layer.cornerRadius = cornerRadius
+        imageview.clipsToBounds = true
+        if let bg = background { imageview.backgroundColor = bg }
+        return imageview
     }
 }
 
-// MARK: - UITextField
 extension UITextField {
     static func buildRounded(placeholder: String? = nil) -> UITextField {
         let tf = UITextField()
@@ -104,3 +104,4 @@ extension UIButton {
         return b
     }
 }
+*/

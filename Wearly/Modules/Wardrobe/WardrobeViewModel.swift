@@ -1,32 +1,37 @@
 import UIKit
 
 final class WardrobeViewModel {
-
-    // Outputs
+    
     var onItemsChanged: (([ClothingItem]) -> Void)?
     var onDataChanged: (() -> Void)?
     var onError: ((String) -> Void)?
 
-    // State
-    private(set) var allItems: [ClothingItem] = [] {
-        didSet { onItemsChanged?(filteredItems) }
-    }
-    private(set) var selectedCategory: ClothingCategory = .tops {
-        didSet { onItemsChanged?(filteredItems) }
-    }
-
+    private(set) var allItems: [ClothingItem] = []
+    private(set) var selectedCategory: ClothingCategory = .tops
+    
     private var itemsURL: URL {
         StorageManager.shared.documentsURL.appendingPathComponent("wardrobe.json")
     }
-
+    
     var filteredItems: [ClothingItem] {
         allItems.filter { $0.category == selectedCategory }
     }
+    
+    func loadItems(_ items: [ClothingItem]) {
+        allItems = items
+        notifyChanges()
+    }
 
-    // Intents
     func updateCategory(to category: ClothingCategory) {
         selectedCategory = category
-        onDataChanged?()
+        notifyChanges()
+    }
+    
+    private func notifyChanges() {
+        let snapshot = filteredItems
+        DispatchQueue.main.async { [weak self] in
+            self?.onItemsChanged?(snapshot)
+        }
     }
 
     func add(image: UIImage, name: String, category: ClothingCategory, season: String, color: String) {
@@ -51,8 +56,6 @@ final class WardrobeViewModel {
         saveToDisk()
         onDataChanged?()
     }
-
-    // Persistence
     func loadFromDisk() {
         do {
             let data = try Data(contentsOf: itemsURL)
@@ -72,4 +75,5 @@ final class WardrobeViewModel {
         }
     }
 }
+
 

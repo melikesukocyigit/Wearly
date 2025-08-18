@@ -63,7 +63,7 @@ final class WardrobeViewController: UIViewController,
 
     private func setupCollectionView() {
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: 150, height: 150) 
+        layout.itemSize = CGSize(width: 150, height: 150)
         layout.minimumInteritemSpacing = 10
         layout.minimumLineSpacing = 16
         layout.sectionInset = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
@@ -78,26 +78,35 @@ final class WardrobeViewController: UIViewController,
 
         view.addSubview(cv)
         NSLayoutConstraint.activate([
-            cv.topAnchor.constraint(equalTo: categoryTabs.bottomAnchor, constant: 8), 
+            cv.topAnchor.constraint(equalTo: categoryTabs.bottomAnchor, constant: 8),
             cv.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             cv.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             cv.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
 
-    @objc private func categoryChanged() {
-        let map: [ClothingCategory] = [.tops, .bottoms, .shoes, .accessories]
-        let idx = categoryTabs.selectedSegmentIndex
-        guard map.indices.contains(idx) else { return }
-        viewModel.updateCategory(to: map[idx])
+    @objc private func categoryChanged(_ sender: UISegmentedControl) {
+        let categories = ClothingCategory.allCases
+        let selected = categories[sender.selectedSegmentIndex]
+        viewModel.updateCategory(to: selected)
     }
 
     @objc private func addButtonTapped() {
         let addVM = AddClothingViewModel()
         let addVC = AddClothingViewController(viewModel: addVM)
         addVC.onSave = { [weak self] image, name, category, season, colorHex in
-            self?.viewModel.add(image: image, name: name, category: category, season: season, color: colorHex)
+            guard let self = self else { return }
+            self.viewModel.add(image: image,
+                               name: name,
+                               category: category,
+                               season: season,
+                               color: colorHex)
+
+            DispatchQueue.main.async {
+                self.dismiss(animated: true)
+            }
         }
+
         let nav = UINavigationController(rootViewController: addVC)
         nav.modalPresentationStyle = .pageSheet
         if let sheet = nav.sheetPresentationController {
@@ -107,7 +116,6 @@ final class WardrobeViewController: UIViewController,
         present(nav, animated: true)
     }
 
-    // MARK: - DataSource / Delegate
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         viewModel.filteredItems.count
     }
@@ -132,4 +140,5 @@ final class WardrobeViewController: UIViewController,
         present(UINavigationController(rootViewController: vc), animated: true)
     }
 }
+
 

@@ -3,7 +3,6 @@ import CoreImage
 
 final class AddClothingViewModel {
 
-    // State
     private(set) var capturedImage: UIImage?
     private(set) var selectedCategory: ClothingCategory = .tops
     private(set) var selectedSeason: String = "All Seasons"
@@ -11,31 +10,29 @@ final class AddClothingViewModel {
     private(set) var selectedColorHex: String?
 
     let seasons = ["Spring", "Summer", "Autumn", "Winter", "All Seasons"]
-
-    // geniş palet (kaydırmalı görünüm için)
+    
     let staticColors: [String] = [
         "#FFFFFF","#000000","#808080","#F5F5DC","#FF0000","#000080","#87CEEB","#008000",
         "#FFD700","#8B4513","#FFA500","#800080","#FFC0CB","#A52A2A","#00CED1","#2E8B57",
         "#B0C4DE","#DC143C","#FF7F50","#40E0D0","#ADD8E6","#556B2F","#B22222","#708090"
     ]
-
-    // Bindings (opsiyonel)
     var onImageUpdate: ((UIImage?) -> Void)?
     var onPredictionUpdate: ((ClothingCategory) -> Void)?
     var onColorUpdate: ((String, UIColor) -> Void)?
     var onSaveEnabled: ((Bool) -> Void)?
 
-    // Setters
     func setImage(_ image: UIImage) {
         capturedImage = image
         onImageUpdate?(image)
         validateSave()
     }
+    
     func setCategory(_ cat: ClothingCategory) {
         selectedCategory = cat
         onPredictionUpdate?(cat)
         validateSave()
     }
+    
     func setSeason(_ s: String) {
         selectedSeason = s
         validateSave()
@@ -49,8 +46,6 @@ final class AddClothingViewModel {
         onColorUpdate?(selectedColorHex ?? "#808080", color)
         validateSave()
     }
-
-    // Helpers
     func uiColor(from hex: String) -> UIColor? {
         var s = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
         if s.hasPrefix("#") { s.removeFirst() }
@@ -99,7 +94,7 @@ final class AddClothingViewModel {
         return bestIdx
     }
 
-    @discardableResult
+    @discardableResult //ignorinf return values
     func autoPickNearestColorForCurrentImage() -> (Int?, String?) {
         guard let img = capturedImage,
               let avg = averageHex(from: img),
@@ -109,8 +104,7 @@ final class AddClothingViewModel {
         selectColor(at: idx)
         return (idx, staticColors[idx])
     }
-
-    // Save
+    
     func buildPayload(name: String?) -> (image: UIImage, name: String, category: ClothingCategory, season: String, colorHex: String)? {
         guard let img = capturedImage else { return nil }
         let finalName = (name?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty == false) ? name! : selectedCategory.rawValue
@@ -123,4 +117,5 @@ final class AddClothingViewModel {
         onSaveEnabled?(ok)
     }
 }
+
 

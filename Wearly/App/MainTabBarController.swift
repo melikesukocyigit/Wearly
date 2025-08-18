@@ -15,17 +15,29 @@ final class MainTabBarController: UITabBarController {
             selectedImage: UIImage(systemName: "hanger")
         )
 
-        let combos = UIViewController()
-        combos.view.backgroundColor = .systemBackground
-        combos.title = "Combinations"
-        combos.tabBarItem = UITabBarItem(title: "Combos", image: UIImage(systemName: "sparkles"), selectedImage: nil)
+        // Combinations (DI: gardırop sağlayıcısını enjekte et)
+        let combosVC = CombinationsViewController()
+        combosVC.title = "Combinations"
+        combosVC.wardrobeProvider = { wardrobeVM.allItems }
+        let combosNav = UINavigationController(rootViewController: combosVC)
+        combosNav.tabBarItem = UITabBarItem(
+            title: "Combinations",
+            image: UIImage(systemName: "sparkles"),
+            selectedImage: UIImage(systemName: "sparkles")
+        )
 
+        // Profile (placeholder)
         let profile = UIViewController()
         profile.view.backgroundColor = .systemBackground
         profile.title = "Profile"
-        profile.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person.crop.circle"), selectedImage: nil)
+        let profileNav = UINavigationController(rootViewController: profile)
+        profileNav.tabBarItem = UITabBarItem(
+            title: "Profile",
+            image: UIImage(systemName: "person.crop.circle"),
+            selectedImage: UIImage(systemName: "person.crop.circle")
+        )
 
-        viewControllers = [wardrobeNav, combos, profile]
+        viewControllers = [wardrobeNav, combosNav, profileNav]
     }
 }
 

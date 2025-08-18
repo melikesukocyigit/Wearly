@@ -2,8 +2,6 @@ import UIKit
 
 final class ClothingClassifier {
     func classify(image: UIImage, completion: @escaping (String) -> Void) {
-        // Burada gerçek CoreML çağrını yapabilirsin.
-        // Şimdilik örnek amaçlı sabit bir etiket dönelim:
         DispatchQueue.global().asyncAfter(deadline: .now() + 0.2) {
             completion("tops")
         }
@@ -19,4 +17,5 @@ final class ClothingClassifier {
         }
     }
 }
+
 
