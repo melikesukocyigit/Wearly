@@ -39,6 +39,8 @@
 		F1A9062F2E4F547200DF2C85 /* ColorUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A9062E2E4F545D00DF2C85 /* ColorUtils.swift */; };
 		F1A906332E4F59B100DF2C85 /* SeasonUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A906322E4F59A800DF2C85 /* SeasonUtils.swift */; };
 		F1A906352E4F607C00DF2C85 /* ScoreUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A906342E4F607800DF2C85 /* ScoreUtils.swift */; };
+		F1A906372E530C2300DF2C85 /* FavoriteCombination.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A906362E530C1700DF2C85 /* FavoriteCombination.swift */; };
+		F1A906392E530C4000DF2C85 /* FavoritesStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A906382E530C3500DF2C85 /* FavoritesStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,6 +78,8 @@
 		F1A9062E2E4F545D00DF2C85 /* ColorUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorUtils.swift; sourceTree = "<group>"; };
 		F1A906322E4F59A800DF2C85 /* SeasonUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonUtils.swift; sourceTree = "<group>"; };
 		F1A906342E4F607800DF2C85 /* ScoreUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreUtils.swift; sourceTree = "<group>"; };
+		F1A906362E530C1700DF2C85 /* FavoriteCombination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCombination.swift; sourceTree = "<group>"; };
+		F1A906382E530C3500DF2C85 /* FavoritesStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +184,8 @@
 		F1A905FB2E4A296600DF2C85 /* Combinations */ = {
 			isa = PBXGroup;
 			children = (
+				F1A906382E530C3500DF2C85 /* FavoritesStore.swift */,
+				F1A906362E530C1700DF2C85 /* FavoriteCombination.swift */,
 				F1A906342E4F607800DF2C85 /* ScoreUtils.swift */,
 				F1A906322E4F59A800DF2C85 /* SeasonUtils.swift */,
 				F1A9062E2E4F545D00DF2C85 /* ColorUtils.swift */,
@@ -358,11 +364,13 @@
 				F17DCB5E2E45E64C006C5578 /* ProfileViewController.swift in Sources */,
 				F1A906172E4A349300DF2C85 /* AddClothingViewModel.swift in Sources */,
 				F17DCB5A2E45E629006C5578 /* ClothingItem.swift in Sources */,
+				F1A906392E530C4000DF2C85 /* FavoritesStore.swift in Sources */,
 				F1A906272E4DBB6000DF2C85 /* EmbeddingService.swift in Sources */,
 				F17DCB682E45E71B006C5578 /* MainTabBarController.swift in Sources */,
 				F1A906352E4F607C00DF2C85 /* ScoreUtils.swift in Sources */,
 				F1A905E62E47634800DF2C85 /* StorageManager.swift in Sources */,
 				F1A9061D2E4AA32200DF2C85 /* ClothingDetailViewModel.swift in Sources */,
+				F1A906372E530C2300DF2C85 /* FavoriteCombination.swift in Sources */,
 				F17DCB662E45E698006C5578 /* WardrobeViewModel.swift in Sources */,
 				F17DCB642E45E68A006C5578 /* AddClothingViewController.swift in Sources */,
 				F17DCB602E45E663006C5578 /* CombinationsViewController.swift in Sources */,
